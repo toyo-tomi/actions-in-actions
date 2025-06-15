@@ -8,7 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print event data
+        env:
+          ACTIONS_STEP_DEBUG: true
         run: |
           echo "::error file=README.md,line=1::Missing semicolon"
+          echo "::debug::Set the octocat variable"
           echo "Event type: ${{ github.event.action }}"
           echo "Client payload: ${{ toJson(github.event.client_payload) }}"
